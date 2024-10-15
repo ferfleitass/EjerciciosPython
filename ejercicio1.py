@@ -1,6 +1,9 @@
+# Lista para almacenar las valoraciones y comentarios...
+valoraciones = []
+
 def main():
     while True:
-        print("Por favor, elige una opción:")
+        print("\nPor favor, elige una opción:")
         print("1. Introducir punto de valoración")
         print("2. Ver resultados")
         print("3. Salir")
@@ -26,7 +29,8 @@ def introducir_valoracion():
             valoracion = int(input("¿Cuál es tu valoración del 1 al 5? "))
             if 1 <= valoracion <= 5:
                 comentario = input("Deja un comentario: ")
-                # Aquí podrías guardar la valoración y el comentario
+                # Guardamos la valoración y el comentario
+                valoraciones.append((valoracion, comentario))
                 print(f'Valoración registrada: {valoracion}, Comentario: "{comentario}"')
                 break
             else:
@@ -35,9 +39,12 @@ def introducir_valoracion():
             print('Eso no es un número. Intenta nuevamente.')
 
 def comprobar_resultados():
-    # Aquí podrías mostrar los resultados almacenados
-    print("Aquí irían los resultados guardados.")
-    # Ejemplo: print(resultados)
+    if valoraciones:
+        print("\nResultados de valoraciones:")
+        for valoracion, comentario in valoraciones:
+            print(f"Valoración: {valoracion}, Comentario: {comentario}")
+    else:
+        print("No hay valoraciones registradas aún.")
 
 if __name__ == "__main__":
     main()
